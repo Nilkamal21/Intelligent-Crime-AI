@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Typography */
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-header: 'Outfit', sans-serif;
+
+  /* Color Palette (Tactical Cyber Security Dark Theme) */
+  --bg-primary: #080c14;
+  --bg-secondary: #0f1626;
+  --bg-tertiary: #172237;
+  
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(15, 22, 38, 0.6);
+  --glass-bg-hover: rgba(23, 34, 55, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-focus: rgba(37, 99, 235, 0.4);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  
+  /* Tactical Highlights */
+  --accent-blue: #2563eb;
+  --accent-cyan: #06b6d4;
+  --accent-violet: #8b5cf6;
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-danger: #ef4444;
+  
+  /* Text colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* UI Dimensions */
+  --sidebar-width: 260px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+  
+  /* Glow effects */
+  --glow-blue: 0 0 15px rgba(37, 99, 235, 0.35);
+  --glow-cyan: 0 0 15px rgba(6, 182, 212, 0.35);
+  --glow-danger: 0 0 15px rgba(239, 68, 68, 0.35);
+  --glow-success: 0 0 15px rgba(16, 185, 129, 0.35);
+  --glow-warning: 0 0 15px rgba(245, 158, 11, 0.35);
+}
+
+/* Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-tertiary) var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Common Layout Containers */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at 50% 0%, #0d1e3d 0%, var(--bg-primary) 70%);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header-bar {
+  height: 70px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 10;
+}
+
+/* Glassmorphic Panel Styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Interactive elements */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-header);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--glow-blue);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+}
+
+.btn-secondary {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  padding: 10px 18px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-header);
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--text-secondary);
+}
+
+/* Dashboard Grid Layouts */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 16px;
+  padding: 16px;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+/* Card classes */
+.card-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-flagged {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.1);
+}
+
+.badge-active {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-frozen {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--accent-danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.1);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
+}
+
+.pulse-border {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* Vis.js Tooltip Custom Styling (Legibility upgrade) */
+div.vis-network div.vis-tooltip {
+  position: absolute;
+  visibility: hidden;
+  padding: 10px 14px;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  color: #f8fafc;
+  background: rgba(10, 15, 26, 0.95) !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important; /* Cyan border */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(6, 182, 212, 0.15);
+  pointer-events: none;
+  z-index: 1000;
+  white-space: normal;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/* Custom Leaflet Marker Cluster Dark-Theme Styles */
+.marker-cluster-small {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+}
+.marker-cluster-small div {
+  background-color: rgba(6, 182, 212, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: 1px solid rgba(6, 182, 212, 0.8) !important;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+.marker-cluster-medium {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+}
+.marker-cluster-medium div {
+  background-color: rgba(245, 158, 11, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: 1px solid rgba(245, 158, 11, 0.8) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.marker-cluster-large {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+.marker-cluster-large div {
+  background-color: rgba(239, 68, 68, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  border: 1px solid rgba(239, 68, 68, 0.8) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+.marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  font-family: var(--font-primary) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.1;
+}
